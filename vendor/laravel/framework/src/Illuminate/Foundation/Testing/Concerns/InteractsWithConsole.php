@@ -2,10 +2,10 @@
 
 namespace Illuminate\Foundation\Testing\Concerns;
 
+use Illuminate\Support\Arr;
 use Illuminate\Console\OutputStyle;
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Support\Arr;
-use Illuminate\Testing\PendingCommand;
+use Illuminate\Foundation\Testing\PendingCommand;
 
 trait InteractsWithConsole
 {
@@ -35,7 +35,7 @@ trait InteractsWithConsole
      *
      * @param  string  $command
      * @param  array  $parameters
-     * @return \Illuminate\Testing\PendingCommand|int
+     * @return \Illuminate\Foundation\Testing\PendingCommand|int
      */
     public function artisan($command, $parameters = [])
     {
