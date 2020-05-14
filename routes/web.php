@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('apilol/{request}', function ($request){
+    return redirect('https://ddragon.leagueoflegends.com/cdn/'+$request);
+})->middleware('auth');
