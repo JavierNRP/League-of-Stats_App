@@ -6,6 +6,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Usuarios - League Of Stats</title>
+    <link rel="icon" type="image/svg" href="{{ asset('img/leagueoflegends_94793.svg') }}" sizes="32x32">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
