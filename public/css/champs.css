@@ -1,0 +1,555 @@
+@charset "UTF-8";
+/* Colores. Cabecera de página */
+/* Colores. Cuerpo de página */
+/* Colores. Pie de página */
+/* Tipografías */
+/* Colores */
+/********************* Barra de navegación y Cuerpo, colocar en la plantilla de la página *********************/
+header {
+  background-color: #111111;
+  font-family: "Magra", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #785a28;
+}
+
+header div {
+  padding-left: 25px;
+}
+
+header div li {
+  color: #fafafa;
+  padding: 12px;
+}
+
+header div li:hover {
+  color: #fafafa;
+  border-bottom: 1px solid #0bc4e2;
+}
+
+header div li .dropdown-menu {
+  background-color: #111111;
+}
+
+header div li .dropdown-menu .dropdown-item {
+  color: #fafafa;
+  padding: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+header div li .dropdown-menu .dropdown-item:hover {
+  background-color: #333333;
+}
+
+header div li a {
+  color: #fafafa;
+}
+
+header div li a:hover {
+  color: #fafafa;
+}
+
+header .botonInicioSesion {
+  font-size: small;
+  font-weight: bold;
+}
+
+header .botonInicioSesion:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+header .botonRegistro {
+  color: #fafafa;
+  border: solid;
+  font-size: small;
+  font-weight: bold;
+  padding: 10px 40px 10px;
+  background-color: #0bc4e2;
+  border-color: #0bc4e2;
+  border-radius: 5px;
+}
+
+header .botonRegistro:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+/********************* Barra de navegación y Cuerpo, colocar en la plantilla de la página *********************/
+/* Sección de Introducción a la Página de Campeones */
+section[id="introChamps"] #titulos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 35px 0px 5px 0px;
+  color: black;
+  background-image: url("/img/img-noise.png");
+}
+
+section[id="introChamps"] #titulos h1 {
+  font-family: "Tinos", serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1000%;
+  margin: -35px 0px -75px;
+}
+
+section[id="introChamps"] #titulos h4 {
+  font-family: "Public Sans", sans-serif;
+  font-style: italic;
+  font-weight: lighter;
+  padding-top: 35px;
+}
+
+section[id="introChamps"] #texto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 55px;
+}
+
+section[id="introChamps"] #texto p {
+  font-weight: lighter;
+  font-size: medium;
+  width: 350px;
+  text-align: center;
+}
+
+/* Barra de Búsqueda y Filtros de Campeones */
+#filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 1px solid #785a28;
+  margin: 40px 545px 15px 545px;
+}
+
+#filter form {
+  width: 180px;
+  margin: 5px 20px -10px;
+}
+
+#filter form input {
+  padding: 5px;
+  border: 1px solid #785a28;
+}
+
+#filter form input:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+#filter ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  list-style-type: none;
+  margin: 10px;
+}
+
+#filter ul li {
+  margin: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 10px;
+  -webkit-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+}
+
+#filter ul li:hover {
+  border-bottom: 2px solid #0bc4e2;
+}
+
+#filter ul li button {
+  background: none;
+  border: none;
+}
+
+#filter ul li button:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+/* Contenedor con los Campeones y sus Nombres */
+#champs {
+  padding: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#champs .champion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+#champs .champion img[id]:not([class]) {
+  width: 290px;
+  -webkit-animation: iconFade 1.5s;
+          animation: iconFade 1.5s;
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+#champs .champion img[id]:not([class]):hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+
+#champs .champion #name {
+  font-weight: bold;
+  font-size: 40px;
+}
+
+/* Animación para las Imágenes de los Campeones */
+@-webkit-keyframes iconFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes iconFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal con la Información de los cada Campeones */
+.modal-dialog {
+  max-width: 700px;
+  padding: 5px;
+}
+
+.modal-dialog .modal-header {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 10px;
+}
+
+.modal-dialog .modal-header h1 {
+  margin-bottom: -5px;
+  font-size: 395%;
+  font-weight: bold;
+}
+
+.modal-dialog .modal-header img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.modal-dialog .modal-body {
+  padding: 10px;
+}
+
+.modal-dialog .modal-body #champInfo h1:last-of-type {
+  margin-top: 10px;
+}
+
+.modal-dialog .modal-body #spells .media h5 {
+  font-weight: bold;
+}
+
+.modal-dialog .modal-body #spells .media img {
+  width: 64px;
+  height: 64px;
+}
+
+.modal-dialog .modal-body img {
+  border-radius: 4px;
+}
+
+.modal-dialog .modal-body img:hover {
+  -webkit-animation: efectoZumbido 0.2s infinite;
+          animation: efectoZumbido 0.2s infinite;
+}
+
+.modal-dialog .modal-body h4 {
+  font-family: "Public Sans", sans-serif;
+}
+
+.modal-dialog .modal-body h1 {
+  font-weight: bold;
+}
+
+.modal-dialog .modal-footer button {
+  width: 100%;
+  background-color: #e3342f;
+  border-color: #e3342f;
+  color: #fafafa;
+  font-weight: bold;
+}
+
+/* Animación para las Habilidades de los Campeones */
+@-webkit-keyframes efectoZumbido {
+  0% {
+    -webkit-transform: rotateZ(-5deg);
+            transform: rotateZ(-5deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(0deg) scale(0.95);
+            transform: rotateZ(0deg) scale(0.95);
+  }
+  100% {
+    -webkit-transform: rotateZ(5deg);
+            transform: rotateZ(5deg);
+  }
+}
+@keyframes efectoZumbido {
+  0% {
+    -webkit-transform: rotateZ(-5deg);
+            transform: rotateZ(-5deg);
+  }
+  50% {
+    -webkit-transform: rotateZ(0deg) scale(0.95);
+            transform: rotateZ(0deg) scale(0.95);
+  }
+  100% {
+    -webkit-transform: rotateZ(5deg);
+            transform: rotateZ(5deg);
+  }
+}
+
+/********************* Sección Multimedia y Pie de página, colocar en la plantilla de la página *********************/
+section[id="video"] {
+  position: relative;
+  width: 100%;
+  height: 900px;
+  padding: 100px;
+}
+
+section[id="video"] div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: normal;
+      -ms-flex-align: normal;
+          align-items: normal;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section[id="video"] div:hover svg {
+  border-radius: 20px;
+}
+
+section[id="video"] div .infoLateral {
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  top: 390px;
+  left: 25px;
+  font-size: small;
+  font-weight: bold;
+}
+
+section[id="video"] div video {
+  position: absolute;
+  margin-left: 10px;
+}
+
+section[id="video"] div svg {
+  position: absolute;
+  top: 125px;
+  margin-left: 10px;
+  border: 1px solid #ababab;
+  z-index: 1;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+section[id="video"] div .logoFrontal {
+  position: absolute;
+  top: 300px;
+  padding: 19px 35px 15px 55px;
+}
+
+footer {
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+footer section[id="plataformas"] div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  padding: 5px 0px 5px 0px;
+  color: #fafafa;
+  background-color: #061c25;
+}
+
+footer section[id="plataformas"] div h5 {
+  font-weight: bold;
+}
+
+footer section[id="plataformas"] div p {
+  font-weight: lighter;
+}
+
+footer div {
+  padding: 5px 10px 0px 10px;
+  margin: 0px 0px 0px 0px;
+  background-color: #111111;
+}
+
+footer div #enlaces {
+  padding: 10px;
+  font-weight: bold;
+}
+
+footer div #enlaces ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  list-style: none;
+}
+
+footer div #enlaces ul a {
+  color: #fafafa;
+  text-decoration: none;
+}
+
+footer div #logo_riot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+}
+
+footer div #logo_riot svg {
+  margin-left: 20px;
+}
+
+footer div #redes_sociales {
+  padding: 10px;
+}
+
+footer div #redes_sociales ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+}
+
+footer div #redes_sociales ul li {
+  padding: 10px;
+}
+
+footer div #redes_sociales ul li a {
+  color: #fafafa;
+  text-decoration: none;
+}
+
+footer div #copyright {
+  color: #fafafa;
+  text-align: center;
+  padding-left: 60px;
+  font-weight: lighter;
+}
+
+footer div #calificaciones {
+  padding: 0px 0px 25px;
+  margin: 20px 0px 0px;
+}
+
+footer div #calificaciones div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/********************* Sección Multimedia y Pie de página, colocar en la plantilla de la página *********************/
+/*# sourceMappingURL=champs.css.map */

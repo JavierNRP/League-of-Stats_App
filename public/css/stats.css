@@ -1,0 +1,519 @@
+@charset "UTF-8";
+/* Colores. Cabecera de página */
+/* Colores. Cuerpo de página */
+/* Colores. Pie de página */
+/* Colores. Errores detectados */
+/* Tipografías */
+/* Colores */
+/********************* Barra de navegación y Cuerpo, colocar en la plantilla de la página *********************/
+header {
+  background-color: #111111;
+  font-family: "Magra", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #785a28;
+}
+
+header div {
+  padding-left: 25px;
+}
+
+header div li {
+  color: #fafafa;
+  padding: 12px;
+}
+
+header div li:hover {
+  color: #fafafa;
+  border-bottom: 1px solid #0bc4e2;
+}
+
+header div li .dropdown-menu {
+  background-color: #111111;
+}
+
+header div li .dropdown-menu .dropdown-item {
+  color: #fafafa;
+  padding: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+header div li .dropdown-menu .dropdown-item:hover {
+  background-color: #333333;
+}
+
+header div li a {
+  color: #fafafa;
+}
+
+header div li a:hover {
+  color: #fafafa;
+}
+
+header .botonInicioSesion {
+  font-size: small;
+  font-weight: bold;
+}
+
+header .botonInicioSesion:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+header .botonRegistro {
+  color: #fafafa;
+  border: solid;
+  font-size: small;
+  font-weight: bold;
+  padding: 10px 40px 10px;
+  background-color: #0bc4e2;
+  border-color: #0bc4e2;
+  border-radius: 5px;
+}
+
+header .botonRegistro:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+/********************* Barra de navegación y Cuerpo, colocar en la plantilla de la página *********************/
+/* Sección de Introducción a la Página de Estadísticas */
+section[id="introStats"] #titulos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 35px 0px 5px 0px;
+  color: black;
+  background-image: url("/img/img-noise.png");
+}
+
+section[id="introStats"] #titulos h1 {
+  font-family: "Tinos", serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1000%;
+  margin: -35px 0px -75px;
+}
+
+section[id="introStats"] #titulos h4 {
+  font-family: "Public Sans", sans-serif;
+  font-style: italic;
+  font-weight: lighter;
+  padding-top: 35px;
+  margin-right: 465px;
+}
+
+section[id="introStats"] #texto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 55px;
+}
+
+section[id="introStats"] #texto p {
+  font-weight: lighter;
+  font-size: medium;
+  width: 350px;
+  text-align: center;
+}
+
+/* Barra de Búsqueda de Estadísticas del Invocador */
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 40px 470px 15px 470px;
+  padding: 15px 35px 15px;
+  border: 1px solid #785a28;
+}
+
+form div {
+  width: 100%;
+  padding-right: 70px;
+}
+
+form div label {
+  font-family: "Public Sans", sans-serif;
+  font-size: small;
+  font-style: normal;
+}
+
+form button {
+  margin-top: 15px;
+  padding: 10px 35px;
+  width: 50%;
+  color: #fafafa;
+  border: solid;
+  background-color: #0bc4e2;
+  border-color: #0bc4e2;
+  border-radius: 5px;
+}
+
+form button:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+/* Mostrado del perfil del Invocador */
+#main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  margin: 40px 392px 15px 392px;
+  padding: 15px 35px 15px;
+}
+
+#main .media {
+  padding: 10px;
+  border: 1px solid #ababab;
+}
+
+#main .media .media-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+  text-align: justify;
+}
+
+#main .media .media-body h1 {
+  font-weight: bold;
+}
+
+#main .media img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+/* Mostrado del Historial del Invocador */
+#history {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  /* Mostrado de las Maestrías del invocador */
+  /* Mostrado de las Últimas Partidas del invocador */
+}
+
+#history #mastery {
+  display: -ms-grid;
+  display: grid;
+  grid-column: auto;
+  margin-right: 185px;
+}
+
+#history #mastery #errorMaestrias {
+  border: 1px solid #ababab;
+}
+
+#history #mastery .media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  border: 1px solid #ababab;
+  padding: 10px;
+  margin: 5px;
+}
+
+#history #mastery .media .media-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+  text-align: justify;
+}
+
+#history #mastery .media img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+#history #match {
+  display: -ms-grid;
+  display: grid;
+  grid-column: auto;
+}
+
+#history #match #errorPartidas {
+  border: 1px solid #ababab;
+}
+
+#history #match .media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  border: 1px solid #ababab;
+  padding: 10px;
+  margin: 5px;
+}
+
+#history #match .media .media-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+  text-align: justify;
+}
+
+#history #match .media img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+/* Mostrado de imagen sino encuentra el invocador */
+#error {
+  padding: 100px;
+  margin-top: -120px;
+}
+
+#error img {
+  border: 1px solid #ababab;
+}
+
+/********************* Sección Multimedia y Pie de página, colocar en la plantilla de la página *********************/
+section[id="video"] {
+  position: relative;
+  width: 100%;
+  height: 900px;
+  padding: 100px;
+}
+
+section[id="video"] div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: normal;
+      -ms-flex-align: normal;
+          align-items: normal;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section[id="video"] div:hover svg {
+  border-radius: 20px;
+}
+
+section[id="video"] div .infoLateral {
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  top: 390px;
+  left: 25px;
+  font-size: small;
+  font-weight: bold;
+}
+
+section[id="video"] div video {
+  position: absolute;
+  margin-left: 10px;
+}
+
+section[id="video"] div svg {
+  position: absolute;
+  top: 125px;
+  margin-left: 10px;
+  border: 1px solid #ababab;
+  z-index: 1;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+section[id="video"] div .logoFrontal {
+  position: absolute;
+  top: 300px;
+  padding: 19px 35px 15px 55px;
+}
+
+footer {
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+footer section[id="plataformas"] div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  padding: 5px 0px 5px 0px;
+  color: #fafafa;
+  background-color: #061c25;
+}
+
+footer section[id="plataformas"] div h5 {
+  font-weight: bold;
+}
+
+footer section[id="plataformas"] div p {
+  font-weight: lighter;
+}
+
+footer div {
+  padding: 5px 10px 0px 10px;
+  margin: 0px 0px 0px 0px;
+  background-color: #111111;
+}
+
+footer div #enlaces {
+  padding: 10px;
+  font-weight: bold;
+}
+
+footer div #enlaces ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  list-style: none;
+}
+
+footer div #enlaces ul a {
+  color: #fafafa;
+  text-decoration: none;
+}
+
+footer div #logo_riot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+}
+
+footer div #logo_riot svg {
+  margin-left: 20px;
+}
+
+footer div #redes_sociales {
+  padding: 10px;
+}
+
+footer div #redes_sociales ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  list-style: none;
+}
+
+footer div #redes_sociales ul li {
+  padding: 10px;
+}
+
+footer div #redes_sociales ul li a {
+  color: #fafafa;
+  text-decoration: none;
+}
+
+footer div #copyright {
+  color: #fafafa;
+  text-align: center;
+  padding-left: 60px;
+  font-weight: lighter;
+}
+
+footer div #calificaciones {
+  padding: 0px 0px 25px;
+  margin: 20px 0px 0px;
+}
+
+footer div #calificaciones div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/********************* Sección Multimedia y Pie de página, colocar en la plantilla de la página *********************/
+/*# sourceMappingURL=stats.css.map */
