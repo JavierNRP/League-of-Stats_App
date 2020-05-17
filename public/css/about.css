@@ -2,7 +2,6 @@
 /* Colores. Cabecera de página */
 /* Colores. Cuerpo de página */
 /* Colores. Pie de página */
-/* Colores. Errores detectados */
 /* Tipografías */
 /* Colores */
 /********************* Barra de navegación y Cuerpo, colocar en la plantilla de la página *********************/
@@ -83,8 +82,8 @@ body {
 }
 
 /********************* Barra de navegación y Cuerpo, colocar en la plantilla de la página *********************/
-/* Sección de Introducción a la Página de Estadísticas */
-section[id="introStats"] #titulos {
+/* Sección de Introducción a la Página de Sobre Nosotros */
+section[id="introAbout"] #titulos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -100,85 +99,36 @@ section[id="introStats"] #titulos {
   background-image: url("/img/img-noise.png");
 }
 
-section[id="introStats"] #titulos h1 {
+section[id="introAbout"] #titulos h1 {
   font-family: "Tinos", serif;
   font-style: italic;
   font-weight: bold;
   font-size: 1000%;
-  margin: -35px 0px -75px;
+  margin: 35px 0px -75px;
 }
 
-section[id="introStats"] #titulos h4 {
+section[id="introAbout"] #titulos h4 {
   font-family: "Public Sans", sans-serif;
   font-style: italic;
   font-weight: lighter;
   padding-top: 35px;
-  margin-right: 465px;
 }
 
-section[id="introStats"] #texto {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 55px;
+/* Contenedor con el texto de la Página Sobre Nosotros */
+#textoNosotros {
+  margin: 135px 135px 0px;
+  padding: 60px;
+  text-align: justify;
+  font-size: x-large;
+  border: 1px solid #ababab;
 }
 
-section[id="introStats"] #texto p {
-  font-weight: lighter;
-  font-size: medium;
-  width: 350px;
-  text-align: center;
+#textoNosotros p {
+  text-align: justify;
 }
 
-/* Barra de Búsqueda de Estadísticas del Invocador */
-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  margin: 40px 470px 15px 470px;
-  padding: 15px 35px 15px;
-  border: 1px solid #785a28;
-}
-
-form div {
-  width: 100%;
-  padding-right: 70px;
-}
-
-form div label {
-  font-family: "Public Sans", sans-serif;
-  font-size: small;
-  font-style: normal;
-}
-
-form button {
-  margin-top: 15px;
-  padding: 10px 35px;
-  width: 50%;
-  color: #fafafa;
-  border: solid;
-  background-color: #0bc4e2;
-  border-color: #0bc4e2;
-  border-radius: 5px;
-}
-
-form button:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-/* Mostrado del perfil del Invocador */
-#main {
+/* Contenedor con las Tecnologías de Front-end y Back-end */
+#tecnoFront, #tecnoBack, #tecnoBrowsers {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,151 +136,36 @@ form button:focus {
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-  margin: 40px 392px 15px 392px;
+  margin: 20px 100px 20px;
   padding: 15px 35px 15px;
 }
 
-#main .media {
-  padding: 10px;
+#tecnoFront #front, #tecnoFront #back, #tecnoFront #browser, #tecnoBack #front, #tecnoBack #back, #tecnoBack #browser, #tecnoBrowsers #front, #tecnoBrowsers #back, #tecnoBrowsers #browser {
+  padding: 25px;
+  text-align: justify;
+  font-size: x-large;
   border: 1px solid #ababab;
-}
-
-#main .media .media-body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-item-align: center;
-      align-self: center;
-  text-align: justify;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
-#main .media .media-body h1 {
+#tecnoFront #front img, #tecnoFront #back img, #tecnoFront #browser img, #tecnoBack #front img, #tecnoBack #back img, #tecnoBack #browser img, #tecnoBrowsers #front img, #tecnoBrowsers #back img, #tecnoBrowsers #browser img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  border: 1px solid #ababab;
+}
+
+#tecnoFront h1, #tecnoBack h1, #tecnoBrowsers h1 {
   font-weight: bold;
-}
-
-#main .media img {
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
-}
-
-/* Mostrado del Historial del Invocador */
-#history {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  /* Mostrado de las Maestrías del invocador */
-  /* Mostrado de las Últimas Partidas del invocador */
-}
-
-#history #mastery {
-  display: -ms-grid;
-  display: grid;
-  grid-column: auto;
-  margin-right: 185px;
-}
-
-#history #mastery #errorMaestrias {
-  border: 1px solid #ababab;
-}
-
-#history #mastery .media {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  border: 1px solid #ababab;
-  padding: 10px;
-  margin: 5px;
-}
-
-#history #mastery .media .media-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-item-align: center;
-      align-self: center;
-  text-align: justify;
-}
-
-#history #mastery .media img {
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
-}
-
-#history #match {
-  display: -ms-grid;
-  display: grid;
-  grid-column: auto;
-}
-
-#history #match .media {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  border: 1px solid #ababab;
-  padding: 10px;
-  margin: 5px;
-}
-
-#history #match .media .media-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-item-align: center;
-      align-self: center;
-  text-align: justify;
-}
-
-#history #match .media img {
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
-}
-
-/* Mostrado de imagen sino encuentra el invocador */
-#error {
-  padding: 100px;
-  margin-top: -120px;
-}
-
-#error img {
-  border: 1px solid #ababab;
 }
 
 /********************* Sección Multimedia y Pie de página, colocar en la plantilla de la página *********************/
@@ -512,4 +347,4 @@ footer div #calificaciones div {
 }
 
 /********************* Sección Multimedia y Pie de página, colocar en la plantilla de la página *********************/
-/*# sourceMappingURL=stats.css.map */
+/*# sourceMappingURL=about.css.map */

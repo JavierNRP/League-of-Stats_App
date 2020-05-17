@@ -78,7 +78,7 @@ header .botonRegistro:focus {
 
 body {
   background-color: #fafafa;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 /********************* Barra de navegación y Cuerpo, colocar en la plantilla de la página *********************/
@@ -419,7 +419,7 @@ section[id="video"] div .logoFrontal {
 }
 
 footer {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 footer section[id="plataformas"] div {
