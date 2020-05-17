@@ -4,7 +4,7 @@ $("#region").change(function () {
   var region = $("#region option:selected").text();
   if (region != "") {
     $.ajax({
-      url: `{!! route('apilol/${region}/status/v3/shard-data') !!}`,
+      url: `https://${region}.api.riotgames.com/lol/status/v3/shard-data?api_key=${key}`,
       method: "GET",
       success: function (result) {
         console.log(result);
