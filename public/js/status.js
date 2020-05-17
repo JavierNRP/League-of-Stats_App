@@ -1,10 +1,10 @@
-const key = "RGAPI-44774ded-8481-4974-bb9f-a9c816618daf";
+const key = "RGAPI-039b63c8-80e6-4473-a09e-8d4bd399f043";
 
 $("#region").change(function () {
   var region = $("#region option:selected").text();
   if (region != "") {
     $.ajax({
-      url: `{!! route('apilol/${region}/status/v3/shard-data') !!}`,
+    url: `https://${region}.api.riotgames.com/lol/status/v3/shard-data?api_key=${key}`,
       method: "GET",
       success: function (result) {
         console.log(result);

@@ -1,5 +1,5 @@
 /**
- * SOLO FUNCTIONA CON EL PLUGIN ALLOW CORS 
+ * SOLO FUNCTIONA CON EL PLUGIN ALLOW CORS
  * Llamadas a la API necesarias
 SUMMONER-V4 (Recogeremos la información del usuario introducido, es necesario el ID Account)
 /lol/summoner/v4/summoners/by-name/{summonerName}
@@ -11,12 +11,12 @@ MATCH-V4 (Para mostrar la información de las últimas partidas jugadas y los ca
 /lol/match/v4/matches/{matchId}
 
 CHAMPION-MASTERY-V4 (Para recoger el total de maestría)
-/lol/champion-mastery/v4/scores/by-summoner/{encryptedSummonerId} 
+/lol/champion-mastery/v4/scores/by-summoner/{encryptedSummonerId}
 
 icono: http://ddragon.leagueoflegends.com/cdn/10.6.1/img/profileicon/685.png
 */
 
-const key = "RGAPI-44774ded-8481-4974-bb9f-a9c816618daf";
+const key = "RGAPI-039b63c8-80e6-4473-a09e-8d4bd399f043";
 var version = "10.7.1";
 startDdragon();
 $("#searchButton").click(function () {
@@ -46,7 +46,7 @@ function startDdragon() {
         } else if (exception === 'abort') {
             msg = 'Ajax request aborted.';
         } else {
-            
+
         }
         toastr.error(msg);
       }

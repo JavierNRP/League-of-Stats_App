@@ -1,4 +1,4 @@
-const key = "RGAPI-44774ded-8481-4974-bb9f-a9c816618daf";
+const key = "RGAPI-039b63c8-80e6-4473-a09e-8d4bd399f043";
 var region = "euw1";
 var version = "10.7.1";
 startDdragon();
@@ -99,7 +99,7 @@ function lastRevision() {
 
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   var imprimirFecha = fechaActual.toLocaleDateString('es-ES', options);
-      
+
   $(`<h4>Última revisión: ${imprimirFecha}</h4>`).insertAfter("#rotacion h1");
   $(`<h4>Última revisión: ${imprimirFecha}</h4>`).insertAfter("#noobs h1");
 }
