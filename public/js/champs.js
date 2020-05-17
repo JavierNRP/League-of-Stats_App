@@ -1,4 +1,4 @@
-import * as Modal from "../champs/modal.js";
+import * as Modal from "./modal.js";
 var version = "10.7.1";
 startDdragon();
 

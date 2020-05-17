@@ -141,6 +141,7 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" media="screen" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <!-- JavaScript File -->
+    <script type="text/javascript" src="{{ asset('js/stats.js') }}"></script>
   </body>
 
 
