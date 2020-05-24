@@ -1,15 +1,3 @@
-/*
- * Cosas que mejorar/arreglar:
- * -A la hora de filtrar por nombre hace falta que la primera letra del nombre este en mayuscula,
- * de lo contrario solo encuentra campeones cuyos nombres contengan las letras introducidas.
- * -La llamada Ajax para conseguir el json especifico de cada campeon no es asincrona,
- * de momento no he encontrado una alternativa para sustituir el "async: false" presente en la llamada.
- * -Debido a que el id de Wukong es "MonkeyKing", al ordenar todos los campeones aparece al lado de los que
- * empiezan por la M y a la hora de buscar su nombre solo se le encuentra escribiendo "MonkeyKing".
- * -A pesar de que las llamadas Ajax contienen una url que devuelve datos en español, los roles todavia salen
- * en ingles (Mage, Tank, etc.).
- */
-
 var modal;
 var version = "10.7.1";
 export function getChampModal(champ) {
