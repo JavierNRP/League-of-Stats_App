@@ -54,4 +54,6 @@
       <div id="info"></div>
     </section>
     <!-- FINAL. Sección del Estado del Servidor -->
+    <!-- JavaScript File -->
+    <script type="text/javascript" src="{{ asset('js/status.js') }}"></script>
 @endsection

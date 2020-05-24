@@ -38,4 +38,6 @@
       </div>
     </section>
     <!-- FINAL. Sección de la Rotación Gratuita Semanal -->
+    <!-- JavaScript File -->
+    <script type="text/javascript" src="{{ asset('js/rotacion.js') }}"></script>
 @endsection

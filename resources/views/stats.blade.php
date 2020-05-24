@@ -58,4 +58,6 @@
       <div id="error"></div>
     </section>
     <!-- FINAL. Sección de los Estadísticas -->
+    <!-- JavaScript File -->
+    <script type="text/javascript" src="{{ asset('js/stats.js') }}"></script>
 @endsection
