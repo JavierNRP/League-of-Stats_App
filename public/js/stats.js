@@ -36,6 +36,9 @@ function startDdragon() {
   }
 }
 
+/**
+ * Obtiene información básica de un invocador, como su nombre, icono o nivel.
+ */
 function getBasicInfo() {
   var region = $("#region option:selected").text();
   var summonerName = $("#name").val();
@@ -56,6 +59,15 @@ function getBasicInfo() {
   });
 }
 
+/**
+ * Recibe y visualiza datos de un invocador y su vez realiza otras dos llamadas AJAX
+ * @param {*} ajaxResponse
+ * Respuesta obtenida de la API de Riot
+ * @param {*} region
+ * Servidor en el que buscar al invocador
+ * @param {*} summonerName
+ * Nombre de invocador
+ */
 function createSummoner(ajaxResponse, region, summonerName) {
   $("#main").empty();
   $("#mastery").empty();
@@ -111,6 +123,15 @@ function createSummoner(ajaxResponse, region, summonerName) {
   });
 }
 
+/**
+ * Visualiza el historial de partidas de un invocador
+ * @param {*} matchHistory
+ * Respuesta obtenida de la API de Riot
+ * @param {*} region
+ * Servidor en el que buscar al invocador
+ * @param {*} summonerName
+ * Nombre del invocador
+ */
 function matchlist(matchHistory, region, summonerName) {
   $("#error").empty();
   $("#match").empty();
@@ -125,6 +146,11 @@ function matchlist(matchHistory, region, summonerName) {
     advancedMatchlist(match);
   }
 
+  /**
+   * Visualiza información más detallada dentro del historial de partidas, la cual requiere una llamada diferente a la API de Riot
+   * @param {*} match
+   * elemento DOM
+   */
   function advancedMatchlist(match) {
     var matchInfo = $(`<div class="media-body" id="matchInfo">`);
     $.ajax({
@@ -175,6 +201,11 @@ function matchlist(matchHistory, region, summonerName) {
   }
 }
 
+/**
+ * Visualiza los puntos de maestria de 3 campeones por orden descendente.
+ * @param {*} masteries
+ * maestrías de campeón
+ */
 function getTopMasteries(masteries) {
   if (masteries.length === 0) {
     $("#mastery").empty();
@@ -199,6 +230,11 @@ function getTopMasteries(masteries) {
   }
 }
 
+/**
+ * Devuelve nombres de campeón a partir de sus ID
+ * @param {*} id
+ * Id de un campeón
+ */
 function idToName(id) {
   var name;
   var ddragon = JSON.parse(localStorage.getItem("ddragon"));
@@ -210,6 +246,11 @@ function idToName(id) {
   return name;
 }
 
+/**
+ * Convierte segundos a formato HMS
+ * @param {*} s
+ * segundos
+ */
 function secondsToHMS(s) {
   var h = Math.floor(s / 3600);
   s -= h * 3600;

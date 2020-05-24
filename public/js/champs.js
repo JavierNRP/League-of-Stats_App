@@ -2,6 +2,11 @@ import * as Modal from "./modal.js";
 var version = "10.7.1";
 startDdragon();
 
+/**
+ * Recibe y envía información a otra función que se encargará de visializar los datos.
+ * @param {*} ddragonResponse
+ * respuesta AJAX, la información puede llegar en forma de array o de json
+ */
 function loadChamps(ddragonResponse) {
   var allChamps = ddragonResponse;
   if (Array.isArray(allChamps)) {
@@ -11,6 +16,11 @@ function loadChamps(ddragonResponse) {
   }
 }
 
+/**
+ *  Visualiza a todos los campeones disponibles.
+ * @param {*} allChamps
+ * respuesta AJAX
+ */
 function createChamp(allChamps) {
   var mainChamps = $("#champs");
   $.each(allChamps, function (index, value) {
@@ -27,6 +37,9 @@ function createChamp(allChamps) {
   });
 }
 
+/**
+ * Obtiene un json con información general de todos los campeones y lo convierte a string para poder guardarlo en localStorage.
+ */
 function startDdragon() {
   if (localStorage.getItem("ddragon") === null) {
     $.ajax({

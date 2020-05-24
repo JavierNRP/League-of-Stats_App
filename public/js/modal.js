@@ -1,5 +1,10 @@
 var modal;
 var version = "10.7.1";
+/**
+ * Carga información de cada campeón y la envía a otra función encargada de visualizarla.
+ * @param {*} champ
+ * Nombre (id) de un campeón
+ */
 export function getChampModal(champ) {
   if (localStorage.getItem(`${champ}Data`) === null) {
     $.ajax({
@@ -36,6 +41,13 @@ export function getChampModal(champ) {
   return modal;
 }
 
+/**
+ * Crea una ventana modal para cada campeón, la cual contiene información específica de cada uno. Esta ventana se hace visible al hacer click en la imagen del campeón
+ * @param {*} response
+ * Información detallada del campeón
+ * @param {*} champ
+ * Nombre (id) del campeón
+ */
 function createModal(response, champ) {
   if (document.getElementById(`${champ}Modal`) === null) {
     var champData = response;
@@ -62,7 +74,7 @@ function createModal(response, champ) {
 
     var spells = $(`<div id="spells">`);
     var mediaList = $(`<ul class="list-unstyled">`);
-    
+
     mediaList.append(`
       <li class="media" id="passive">
       <img class="align-self-start mr-3" src="http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${champData.data[champ].passive.image.full}" alt="Imagen de habilidad (pasiva)">
