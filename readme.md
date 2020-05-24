@@ -32,7 +32,7 @@ http://127.0.0.1:8000
 
 #### Ayoze Amaro Estévez
 
-- Responsable de la interfaz gráfica
+- Responsable del desarrollo de la interfaz gráfica
 - Responsable de la documentación base del proyecto
 
 #### Javier Nicolás Rodríguez Pérez
