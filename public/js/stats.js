@@ -1,22 +1,4 @@
-/**
- * SOLO FUNCTIONA CON EL PLUGIN ALLOW CORS
- * Llamadas a la API necesarias
-SUMMONER-V4 (Recogeremos la información del usuario introducido, es necesario el ID Account)
-/lol/summoner/v4/summoners/by-name/{summonerName}
-
-MATCH-V4 (Cogemos el ID Account del usuario insertado y cogeremos los gameId de las últimas 10 o 20 partidas jugadas)
-/lol/match/v4/matchlists/by-account/{encryptedAccountId}
-
-MATCH-V4 (Para mostrar la información de las últimas partidas jugadas y los campeones utilizados)
-/lol/match/v4/matches/{matchId}
-
-CHAMPION-MASTERY-V4 (Para recoger el total de maestría)
-/lol/champion-mastery/v4/scores/by-summoner/{encryptedSummonerId}
-
-icono: http://ddragon.leagueoflegends.com/cdn/10.6.1/img/profileicon/685.png
-*/
-
-const key = "RGAPI-039b63c8-80e6-4473-a09e-8d4bd399f043";
+const key = "RGAPI-63f6c7b8-2dcd-4bd3-b59d-1dfc95d40001"; // Funciona hasta el Lunes 25 de Mayo (7:37 am)
 var version = "10.7.1";
 startDdragon();
 $("#searchButton").click(function () {
