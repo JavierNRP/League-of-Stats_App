@@ -14,7 +14,7 @@
 Route::get('/', function () { return view('welcome'); });
 Route::get('/index', function () { return view('welcome'); })->name('index');
 Route::get('/about', function () { return view('about'); })->name('about');
-Route::get('/champions', function () { return view('campeones'); })->name('champions');
+Route::get('/champions', function () { return view('champs'); })->name('champions');
 Route::get('/contact', function () { return view('contact'); })->name('contact');
 Route::get('/rotation', function () { return view('rotacion'); })->name('rotation');
 Route::get('/stats', function () { return view('stats'); })->name('stats');
