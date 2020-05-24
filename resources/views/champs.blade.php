@@ -45,4 +45,6 @@
         <div id="champs"></div>
     </section>
     <!-- FINAL. Sección de los Campeones -->
+    <!-- JavaScript File -->
+    <script type="module" src="{{ asset('js/champs.js') }}"></script>
 @endsection
