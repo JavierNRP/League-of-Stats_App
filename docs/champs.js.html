@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: champs.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: champs.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import * as Modal from "./modal.js";
+var version = "10.7.1";
+startDdragon();
+
+/**
+ * Recibe y envía información a otra función que se encargará de visializar los datos.
+ * @param {*} ddragonResponse
+ * respuesta AJAX, la información puede llegar en forma de array o de json
+ */
+function loadChamps(ddragonResponse) {
+  var allChamps = ddragonResponse;
+  if (Array.isArray(allChamps)) {
+    createChamp(allChamps);
+  } else {
+    createChamp(allChamps.data);
+  }
+}
+
+/**
+ *  Visualiza a todos los campeones disponibles.
+ * @param {*} allChamps
+ * respuesta AJAX
+ */
+function createChamp(allChamps) {
+  var mainChamps = $("#champs");
+  $.each(allChamps, function (index, value) {
+    var champion = $(`&lt;div class="champion" data-toggle="modal" data-target="#${value.id}Modal">&lt;/div>`);
+    champion.append(`&lt;img id="${value.id}" src="https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${value.image.full}" alt="Imagen de campeón">`);
+    champion.append(`&lt;p id="name">${value.name}&lt;/p>`);
+    mainChamps.append(champion);
+  });
+
+  $("img").click(function (event) {
+    var modal = Modal.getChampModal(event.target.id);
+    var selected = $(event.target).parent();
+    selected.append(modal);
+  });
+}
+
+/**
+ * Obtiene un json con información general de todos los campeones y lo convierte a string para poder guardarlo en localStorage.
+ */
+function startDdragon() {
+  if (localStorage.getItem("ddragon") === null) {
+    $.ajax({
+      url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/es_ES/champion.json`,
+      method: "GET",
+      success: function (result) {
+        localStorage.setItem("ddragon", JSON.stringify(result));
+        loadChamps(JSON.parse(localStorage.getItem("ddragon")));
+      },
+      error: function(jqXHR, exception) {
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = `Uncaught Error. ${jqXHR.statusText} [${jqXHR.status}]`;
+        }
+        toastr.error(msg);
+      }
+    });
+  } else {
+    loadChamps(JSON.parse(localStorage.getItem("ddragon")));
+  }
+}
+
+$("button").click(function (event) {
+  if (localStorage.getItem("ddragon") === null) {
+    startDdragon();
+  }
+  var filtro = event.target.id;
+  var unfilteredData = JSON.parse(localStorage.getItem("ddragon"));
+  var filteredData = [];
+
+  $.each(unfilteredData.data, function (index, value) {
+    if (unfilteredData.data[index].tags.find((element) => element === filtro)) {
+      filteredData.push(value);
+    }
+  });
+
+  $("#champs").empty();
+  if (filtro === "all") {
+    loadChamps(unfilteredData);
+  } else {
+    loadChamps(filteredData);
+  }
+});
+
+$("#buscarChamp").keyup(function () {
+  if (localStorage.getItem("ddragon") === null) {
+    startDdragon();
+  }
+  var userInput = this.value;
+  var unfilteredData2 = JSON.parse(localStorage.getItem("ddragon"));
+  var filteredData2 = [];
+  $.each(unfilteredData2.data, function (index, value) {
+    if (index.includes(userInput)) {
+      filteredData2.push(value);
+    }
+  });
+  $("#champs").empty();
+  loadChamps(filteredData2);
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createChamp">createChamp</a></li><li><a href="global.html#createModal">createModal</a></li><li><a href="global.html#createSummoner">createSummoner</a></li><li><a href="global.html#getBasicInfo">getBasicInfo</a></li><li><a href="global.html#getChampModal">getChampModal</a></li><li><a href="global.html#getTopMasteries">getTopMasteries</a></li><li><a href="global.html#idToName">idToName</a></li><li><a href="global.html#loadChamps">loadChamps</a></li><li><a href="global.html#matchlist">matchlist</a></li><li><a href="global.html#secondsToHMS">secondsToHMS</a></li><li><a href="global.html#startDdragon">startDdragon</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun May 24 2020 18:17:57 GMT+0100 (WEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

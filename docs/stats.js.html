@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: stats.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: stats.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const key = "RGAPI-63f6c7b8-2dcd-4bd3-b59d-1dfc95d40001"; // Funciona hasta el Lunes 25 de Mayo (7:37 am)
+var version = "10.7.1";
+startDdragon();
+$("#searchButton").click(function () {
+  getBasicInfo();
+});
+
+function startDdragon() {
+  if (localStorage.getItem("ddragon") === null) {
+    $.ajax({
+      url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/es_ES/champion.json`,
+      method: "GET",
+      success: function (result) {
+        localStorage.setItem("ddragon", JSON.stringify(result));
+      },
+      error: function(jqXHR, exception) {
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+
+        }
+        toastr.error(msg);
+      }
+    });
+  }
+}
+
+/**
+ * Obtiene información básica de un invocador, como su nombre, icono o nivel.
+ */
+function getBasicInfo() {
+  var region = $("#region option:selected").text();
+  var summonerName = $("#name").val();
+  $.ajax({
+    url: `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${key}`,
+    method: "GET",
+    success: function (result) {
+      console.log(result);
+      createSummoner(result, region, summonerName);
+    },
+    error: function() {
+      $("#main").empty();
+      $("#mastery").empty();
+      $("#match").empty();
+      $("#error").empty();
+      $("#error").append(`&lt;img src="/img/error_invocador.png" alt="Error en la búsqueda del invocador">`);
+    },
+  });
+}
+
+/**
+ * Recibe y visualiza datos de un invocador y su vez realiza otras dos llamadas AJAX
+ * @param {*} ajaxResponse
+ * Respuesta obtenida de la API de Riot
+ * @param {*} region
+ * Servidor en el que buscar al invocador
+ * @param {*} summonerName
+ * Nombre de invocador
+ */
+function createSummoner(ajaxResponse, region, summonerName) {
+  $("#main").empty();
+  $("#mastery").empty();
+  $("#match").empty();
+  var title = $(`&lt;h1>Perfil del Invocador&lt;/h1>`);
+  var summonerDiv = $(`&lt;div class="media" id="summoner">`);
+  var summonerMedia = $(`&lt;div class="media-body">`);
+  var name = $(`&lt;h1>${ajaxResponse.name}&lt;/h1>`);
+  var icon = $(`&lt;img class="mr-3" src="http://ddragon.leagueoflegends.com/cdn/${version}/img/profileicon/${ajaxResponse.profileIconId}.png" alt="Icono de Invocador">`);
+  var level = $(`&lt;h4>Nivel ${ajaxResponse.summonerLevel}&lt;/h4>`);
+  summonerMedia.append(name).append(level);
+  summonerDiv.append(icon).append(summonerMedia);
+  $("#main").append(title).append(summonerDiv);
+
+  $.ajax({
+    url: `https://${region}.api.riotgames.com/lol/match/v4/matchlists/by-account/${ajaxResponse.accountId}?api_key=${key}`,
+    method: "GET",
+    success: function (result) {
+      console.log(result);
+      matchlist(result, region, summonerName);
+    },
+    error: function() {
+      $("#match").append(`&lt;img id="errorPartidas" src="/img/error_partidas.png" alt="Este invocador no tiene partidas recientes">`);
+    }
+  });
+
+  $.ajax({
+    url: `https://${region}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${ajaxResponse.id}?api_key=${key}`,
+    method: "GET",
+    success: function (result) {
+      console.log(result.slice(0, 3));
+      getTopMasteries(result.slice(0, 3));
+    },
+    error: function(jqXHR, exception) {
+      var msg = '';
+      if (jqXHR.status === 0) {
+          msg = 'Not connect.\n Verify Network.';
+      } else if (jqXHR.status == 404) {
+          msg = 'Requested page not found. [404]';
+      } else if (jqXHR.status == 500) {
+          msg = 'Internal Server Error [500].';
+      } else if (exception === 'parsererror') {
+          msg = 'Requested JSON parse failed.';
+      } else if (exception === 'timeout') {
+          msg = 'Time out error.';
+      } else if (exception === 'abort') {
+          msg = 'Ajax request aborted.';
+      } else {
+          msg = `Uncaught Error. ${jqXHR.statusText} [${jqXHR.status}]`;
+      }
+      toastr.error(msg);
+    }
+  });
+}
+
+/**
+ * Visualiza el historial de partidas de un invocador
+ * @param {*} matchHistory
+ * Respuesta obtenida de la API de Riot
+ * @param {*} region
+ * Servidor en el que buscar al invocador
+ * @param {*} summonerName
+ * Nombre del invocador
+ */
+function matchlist(matchHistory, region, summonerName) {
+  $("#error").empty();
+  $("#match").empty();
+  $("#match").append(`&lt;h1>Últimas partidas&lt;/h1>`);
+  var max = 3;
+  for (var i = 0; i &lt; max; i++) {
+    var match = $(`&lt;div class="media" id="match">`);
+    var championName = idToName(matchHistory.matches[i].champion);
+    var usedChamp = $(`&lt;img class="mr-3" src="https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${championName}.png" alt="Icono de campeón. Últimas partidas">`);
+    match.append(usedChamp);
+    $("#match").append(match);
+    advancedMatchlist(match);
+  }
+
+  /**
+   * Visualiza información más detallada dentro del historial de partidas, la cual requiere una llamada diferente a la API de Riot
+   * @param {*} match
+   * elemento DOM
+   */
+  function advancedMatchlist(match) {
+    var matchInfo = $(`&lt;div class="media-body" id="matchInfo">`);
+    $.ajax({
+      url: `https://${region}.api.riotgames.com/lol/match/v4/matches/${matchHistory.matches[i].gameId}?api_key=${key}`,
+      method: "GET",
+      success: function (result) {
+        console.log(result);
+        var modoJuego = $( `&lt;h3>Modo de juego: &lt;strong>${result.gameMode}&lt;/strong>&lt;/h3>`);
+        var duracion = $( `&lt;h4>Duración de la partida: &lt;strong>${secondsToHMS(result.gameDuration)}&lt;/strong>&lt;/h4>`);
+        var kda;
+        result.participantIdentities.filter(function(value, index) {
+          if (
+            value.player.summonerName.toUpperCase().split(" ").join("") ===
+            summonerName.toUpperCase().split(" ").join("")
+          ) {
+            var playerId = value.participantId;
+            result.participants.filter(function (value, index) {
+              if (playerId === value.participantId) {
+                kda = $(
+                  `&lt;h5>KDA: &lt;strong>${value.stats.kills}/${value.stats.deaths}/${value.stats.assists}&lt;/strong>&lt;/h5>`
+                );
+              }
+            });
+          }
+        });
+        match.append(matchInfo.append(modoJuego).append(duracion).append(kda));
+      },
+      error: function(jqXHR, exception) {
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = `Uncaught Error. ${jqXHR.statusText} [${jqXHR.status}]`;
+        }
+        toastr.error(msg);
+      }
+    });
+  }
+}
+
+/**
+ * Visualiza los puntos de maestria de 3 campeones por orden descendente.
+ * @param {*} masteries
+ * maestrías de campeón
+ */
+function getTopMasteries(masteries) {
+  if (masteries.length === 0) {
+    $("#mastery").empty();
+    $("#mastery").append(`&lt;img src="/img/error_maestrias.png" id="errorMaestrias" alt="Este invocador aun no tiene suficientes maestrias de campeón">`);
+  } else {
+    $("#mastery").empty();
+    var top = 3;
+    var title = $("&lt;h1>Maestrías de campeón&lt;/h1>");
+    $("#mastery").append(title);
+    $.each(masteries, function (index, value) {
+      var champName = idToName(value.championId);
+      var champMastery = $(`&lt;div class="media" id="champMastery">`);
+      var champMedia = $(`&lt;div class="media-body">`);
+      var champIcon = $(`&lt;img class="mr-3" src="https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champName}.png" alt="Icono de campeón. Maestrías de campeón">`);
+      var level = `&lt;h2>Nivel: &lt;strong>${value.championLevel}&lt;/strong>&lt;/h2>`;
+      var maxPoints = `&lt;h3>Puntos: &lt;strong>${value.championPoints}&lt;/strong>&lt;/h3>`;
+      var tokens = `&lt;h4>Fragmentos de campeón: &lt;strong>${value.tokensEarned}&lt;/strong>&lt;/h4>`;
+      champMedia.append(level).append(maxPoints).append(tokens);
+      champMastery.append(champIcon).append(champMedia);
+      $("#mastery").append(champMastery);
+    });
+  }
+}
+
+/**
+ * Devuelve nombres de campeón a partir de sus ID
+ * @param {*} id
+ * Id de un campeón
+ */
+function idToName(id) {
+  var name;
+  var ddragon = JSON.parse(localStorage.getItem("ddragon"));
+  $.each(ddragon.data, function (index, champ) {
+    if (champ.key === id.toString()) {
+      name = champ.id;
+    }
+  });
+  return name;
+}
+
+/**
+ * Convierte segundos a formato HMS
+ * @param {*} s
+ * segundos
+ */
+function secondsToHMS(s) {
+  var h = Math.floor(s / 3600);
+  s -= h * 3600;
+  var m = Math.floor(s / 60);
+  s -= m * 60;
+  if (h != 0) {
+    return (h + "h " + (m &lt; 10 ? "0" + m : m) + "m " + (s &lt; 10 ? "0" + s : s) + "s");
+  }
+  return (m &lt; 10 ? "0" + m : m) + "m " + (s &lt; 10 ? "0" + s : s) + "s";
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createChamp">createChamp</a></li><li><a href="global.html#createModal">createModal</a></li><li><a href="global.html#createSummoner">createSummoner</a></li><li><a href="global.html#getBasicInfo">getBasicInfo</a></li><li><a href="global.html#getChampModal">getChampModal</a></li><li><a href="global.html#getTopMasteries">getTopMasteries</a></li><li><a href="global.html#idToName">idToName</a></li><li><a href="global.html#loadChamps">loadChamps</a></li><li><a href="global.html#matchlist">matchlist</a></li><li><a href="global.html#secondsToHMS">secondsToHMS</a></li><li><a href="global.html#startDdragon">startDdragon</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun May 24 2020 18:17:57 GMT+0100 (WEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

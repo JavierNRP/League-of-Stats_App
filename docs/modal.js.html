@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: modal.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: modal.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var modal;
+var version = "10.7.1";
+/**
+ * Carga información de cada campeón y la envía a otra función encargada de visualizarla.
+ * @param {*} champ
+ * Nombre (id) de un campeón
+ */
+export function getChampModal(champ) {
+  if (localStorage.getItem(`${champ}Data`) === null) {
+    $.ajax({
+      url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/es_ES/champion/${champ}.json`,
+      method: "GET",
+      async: false,
+      success: function(result) {
+        localStorage.setItem(`${champ}Data`, JSON.stringify(result));
+        createModal(JSON.parse(localStorage.getItem(`${champ}Data`)), champ);
+      },
+      error: function(jqXHR, exception) {
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = `Uncaught Error. ${jqXHR.statusText} [${jqXHR.status}]`;
+        }
+        toastr.error(msg);
+      }
+    });
+  } else {
+    createModal(JSON.parse(localStorage.getItem(`${champ}Data`)), champ);
+  }
+  return modal;
+}
+
+/**
+ * Crea una ventana modal para cada campeón, la cual contiene información específica de cada uno. Esta ventana se hace visible al hacer click en la imagen del campeón
+ * @param {*} response
+ * Información detallada del campeón
+ * @param {*} champ
+ * Nombre (id) del campeón
+ */
+function createModal(response, champ) {
+  if (document.getElementById(`${champ}Modal`) === null) {
+    var champData = response;
+    modal = $(
+      `&lt;div class="modal fade" id="${champData.data[champ].id}Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">`
+    );
+    var b4Dialog = $(`&lt;div class="modal-dialog" role="document">`);
+    var b4Content = $(`&lt;div class="modal-content">`);
+
+    var b4Header = $(`&lt;div class="modal-header">
+    &lt;img id="${champData.data[champ].id}" class="splash" src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champData.data[champ].id}_0.jpg" alt="Imagen de campeón">
+    &lt;h1>${champData.data[champ].name}&lt;/h1>
+    &lt;h6 class="modal-title" id="exampleModalLabel">${champData.data[champ].title}&lt;/h6>
+    &lt;/div>`);
+
+    var b4Body = $(`&lt;div class="modal-body">`);
+
+    var champInfo = $(`&lt;div id="champInfo">
+    &lt;h1>Roles&lt;/h1>
+    &lt;h5>${champData.data[champ].tags}&lt;/h5>
+    &lt;h1>Historia&lt;/h1>
+    ${champData.data[champ].lore}
+    &lt;h1>Habilidades&lt;/h1>&lt;/div>`);
+
+    var spells = $(`&lt;div id="spells">`);
+    var mediaList = $(`&lt;ul class="list-unstyled">`);
+
+    mediaList.append(`
+      &lt;li class="media" id="passive">
+      &lt;img class="align-self-start mr-3" src="http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${champData.data[champ].passive.image.full}" alt="Imagen de habilidad (pasiva)">
+      &lt;div class="media-body">
+        &lt;h5 class="mt-0">${champData.data[champ].passive.name} (Pasiva)&lt;/h5>
+        &lt;p>${champData.data[champ].passive.description}&lt;/p>
+      &lt;/div>
+      &lt;/li>
+      `);
+
+    for (var i = 0; i &lt; 4; i++) {
+      mediaList.append(`
+        &lt;li class="media" id="spell">
+        &lt;img class="align-self-start mr-3" src="http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${champData.data[champ].spells[i].id}.png" alt="Imagen de habilidad">
+        &lt;div class="media-body">
+          &lt;h5 class="mt-0">${champData.data[champ].spells[i].name}&lt;/h5>
+          &lt;p>${champData.data[champ].spells[i].description}&lt;/p>
+        &lt;/div>
+        &lt;/li>
+      `);
+    }
+
+    spells.append(mediaList);
+
+    var b4Footer = $(
+      `&lt;div class="modal-footer">&lt;button type="button" class="btn" data-dismiss="modal">Cerrar&lt;/button>`
+    );
+
+    modal.append(
+      b4Dialog.append(
+        b4Content
+          .append(b4Header)
+          .append(b4Body.append(champInfo).append(spells))
+          .append(b4Footer)
+      )
+    );
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#createChamp">createChamp</a></li><li><a href="global.html#createModal">createModal</a></li><li><a href="global.html#createSummoner">createSummoner</a></li><li><a href="global.html#getBasicInfo">getBasicInfo</a></li><li><a href="global.html#getChampModal">getChampModal</a></li><li><a href="global.html#getTopMasteries">getTopMasteries</a></li><li><a href="global.html#idToName">idToName</a></li><li><a href="global.html#loadChamps">loadChamps</a></li><li><a href="global.html#matchlist">matchlist</a></li><li><a href="global.html#secondsToHMS">secondsToHMS</a></li><li><a href="global.html#startDdragon">startDdragon</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun May 24 2020 18:17:57 GMT+0100 (WEST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
