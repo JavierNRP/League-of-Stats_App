@@ -1,7 +1,16 @@
+<head>
+    <title>Registro - League Of Stats</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+</head>
+
+<!-- Añadimos la plantilla  -->
 @extends('layouts.app')
 
+<!-- Añadimos la sección contenido a la plantilla  -->
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 120px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
