@@ -21,7 +21,7 @@ http://127.0.0.1:8000
 * [MySQL](https://www.mysql.com) - Administración de base de datos
 * [HTML5](https://developer.mozilla.org/es/docs/HTML/HTML5) - Representación del contenido
 * [CSS3](https://developer.mozilla.org/es/docs/Archive/CSS3) - Maquetación del diseño
-* [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Funcionalidades y recogida de datos
+* [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) - Funcionalidades y procesado de datos
 
 ## Autores
 
