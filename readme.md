@@ -17,7 +17,7 @@ http://127.0.0.1:8000
 ```
 
 ## Hecho con
-* [Laravel](https://laravel.com) - El framework web usado
+* [Laravel](https://laravel.com) - El framework web utilizado
 * [MySQL](https://www.mysql.com) - Administración de base de datos
 * [HTML5](https://developer.mozilla.org/es/docs/HTML/HTML5) - Representación del contenido
 * [CSS3](https://developer.mozilla.org/es/docs/Archive/CSS3) - Maquetación del diseño
