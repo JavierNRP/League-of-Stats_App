@@ -4,7 +4,7 @@ Página web de estadísticas e información acerca del videojuego, League Of Leg
 ![imagen_previa.PNG](https://github.com/JavierNRP/League-of-Stats_App/blob/master/public/img/imagen_previa.PNG?raw=true)
 
 ## Ejecución
-1. Descargar el [proyecto](https://bit.ly/2LRsfzg) y descomprimir
+1. Descargar el [Proyecto](https://bit.ly/2LRsfzg) y descomprimir
 2. Abrir con [Visual Studio Code](https://code.visualstudio.com) o algún editor de código
 3. Abrir la terminal del editor de código
 4. Ejecutar el siguiente comando
