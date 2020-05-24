@@ -1,4 +1,4 @@
-const key = "RGAPI-039b63c8-80e6-4473-a09e-8d4bd399f043";
+const key = "RGAPI-63f6c7b8-2dcd-4bd3-b59d-1dfc95d40001"; // Funciona hasta el Lunes 25 de Mayo (7:37 am)
 
 $("#region").change(function () {
   var region = $("#region option:selected").text();
