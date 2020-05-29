@@ -13,9 +13,9 @@ Página web de estadísticas e información acerca del videojuego, League Of Leg
 .../public/js/rotacion.js
 .../public/js/status.js
 ```
-5. En la primera línea de cada uno sustituir la **key**
+5. En la primera línea de cada uno añadir la nueva **key**
 ```
-const key = ""; // Introducir la nueva clave
+const key = " ";
 ```
 6. Guardar los cambios en cada archivo
 7. Abrir la terminal del editor de código
