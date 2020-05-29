@@ -39,3 +39,18 @@ http://127.0.0.1:8000
 
 - Responsable del desarrollo Back-end
 - Responsable de la base de datos
+
+## Otros
+Es necesario tener una API key de [Riot Developer Portal](https://developer.riotgames.com) ya que sino no se podrá disfrutar de las funcionalides al completo, será necesario registrarse (si eres miembro del LOL no tienes porque registrarte) y generar una nueva clave (duración máx. 24 horas). Una vez tengamos la llave deberemos hacer lo siguiente:
+1. Abrir para editar cada uno de los siguientes archivos
+```
+League-of-Stats_App/public/js/stats.js
+League-of-Stats_App/public/js/rotacion.js
+League-of-Stats_App/public/js/status.js
+```
+
+2. En la primera línea de cada uno sustituir la **key**
+```
+const key = ""; // Introducir la nueva clave
+```
+3. Guardar los cambios en cada uno y ejecutar el proyecto
