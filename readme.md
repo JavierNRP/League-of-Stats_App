@@ -9,9 +9,9 @@ Página web de estadísticas e información acerca del videojuego, League Of Leg
 3. Es necesario tener una API key de [Riot Developer Portal](https://developer.riotgames.com) ya que sino no se podrá disfrutar de las funcionalidades al completo, será necesario registrarse (si eres usuario del LOL, podrás iniciar sesión directamente) y generar una nueva clave (duración máx. 24 horas). Una vez tengamos la llave deberemos hacer lo siguiente:
 4. Abrir para editar cada uno de los siguientes archivos
 ```
-League-of-Stats_App/public/js/stats.js
-League-of-Stats_App/public/js/rotacion.js
-League-of-Stats_App/public/js/status.js
+.../public/js/stats.js
+.../public/js/rotacion.js
+.../public/js/status.js
 ```
 5. En la primera línea de cada uno sustituir la **key**
 ```
