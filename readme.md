@@ -6,12 +6,24 @@ Página web de estadísticas e información acerca del videojuego, League Of Leg
 ## Ejecución
 1. Descargar el [Proyecto](https://bit.ly/2LRsfzg) y descomprimir
 2. Abrir con [Visual Studio Code](https://code.visualstudio.com) o algún editor de código
-3. Abrir la terminal del editor de código
-4. Ejecutar el siguiente comando
+3. Es necesario tener una API key de [Riot Developer Portal](https://developer.riotgames.com) ya que sino no se podrá disfrutar de las funcionalidades al completo, será necesario registrarse (si eres miembro del LOL no tienes porque registrarte) y generar una nueva clave (duración máx. 24 horas). Una vez tengamos la llave deberemos hacer lo siguiente:
+3.1. Abrir para editar cada uno de los siguientes archivos
+```
+League-of-Stats_App/public/js/stats.js
+League-of-Stats_App/public/js/rotacion.js
+League-of-Stats_App/public/js/status.js
+```
+3.2. En la primera línea de cada uno sustituir la **key**
+```
+const key = ""; // Introducir la nueva clave
+```
+3.3. Guardar los cambios en cada uno
+4. Abrir la terminal del editor de código
+5. Ejecutar el siguiente comando
 ```
 php artisan serve
 ```
-5. Abrir el navegador web y introducir la siguiente URL
+6. Abrir el navegador web y introducir la siguiente URL
 ```
 http://127.0.0.1:8000
 ```
@@ -39,18 +51,3 @@ http://127.0.0.1:8000
 
 - Responsable del desarrollo Back-end
 - Responsable de la base de datos
-
-## Otros
-Es necesario tener una API key de [Riot Developer Portal](https://developer.riotgames.com) ya que sino no se podrá disfrutar de las funcionalides al completo, será necesario registrarse (si eres miembro del LOL no tienes porque registrarte) y generar una nueva clave (duración máx. 24 horas). Una vez tengamos la llave deberemos hacer lo siguiente:
-1. Abrir para editar cada uno de los siguientes archivos
-```
-League-of-Stats_App/public/js/stats.js
-League-of-Stats_App/public/js/rotacion.js
-League-of-Stats_App/public/js/status.js
-```
-
-2. En la primera línea de cada uno sustituir la **key**
-```
-const key = ""; // Introducir la nueva clave
-```
-3. Guardar los cambios en cada uno y ejecutar el proyecto
