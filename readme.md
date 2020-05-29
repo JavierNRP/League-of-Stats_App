@@ -18,12 +18,15 @@ Página web de estadísticas e información acerca del videojuego, League Of Leg
 const key = " ";
 ```
 6. Guardar los cambios en cada archivo
-7. Abrir la terminal del editor de código
-8. Ejecutar el siguiente comando
+7. Abrimos el navegador web e instalamos el siguiente complemento ([Allow CORS: Access-Control-Allow-Origin](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS))
+    * Disponible en [Chrome](https://bit.ly/2AhmWH0)
+    * Disponible en [Mozilla Firefox](https://mzl.la/3dgVAz4)
+8. Abrir la terminal del editor de código
+9. Ejecutar el siguiente comando
 ```
 php artisan serve
 ```
-9. Abrir el navegador web y introducir la siguiente URL
+10. Introducir la siguiente URL en el navegador web
 ```
 http://127.0.0.1:8000
 ```
