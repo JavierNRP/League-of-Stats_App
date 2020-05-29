@@ -6,7 +6,7 @@ Página web de estadísticas e información acerca del videojuego, League Of Leg
 ## Ejecución
 1. Descargar el [Proyecto](https://bit.ly/2LRsfzg) y descomprimir
 2. Abrir con [Visual Studio Code](https://code.visualstudio.com) o algún editor de código
-3. Es necesario tener una API key de [Riot Developer Portal](https://developer.riotgames.com) ya que sino no se podrá disfrutar de las funcionalidades al completo, será necesario registrarse (si eres miembro del LOL, podrás iniciar sesión directamente) y generar una nueva clave (duración máx. 24 horas). Una vez tengamos la llave deberemos hacer lo siguiente:
+3. Es necesario tener una API key de [Riot Developer Portal](https://developer.riotgames.com) ya que sino no se podrá disfrutar de las funcionalidades al completo, será necesario registrarse (si eres usuario del LOL, podrás iniciar sesión directamente) y generar una nueva clave (duración máx. 24 horas). Una vez tengamos la llave deberemos hacer lo siguiente:
 4. Abrir para editar cada uno de los siguientes archivos
 ```
 League-of-Stats_App/public/js/stats.js
